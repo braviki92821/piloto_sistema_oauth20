@@ -72,7 +72,7 @@ app.post('/oauth/token',async  function(req, res) {
                                     }
                                 }
 
-                                let tokenResponse = createToken(clientObject.id, user._id, scopes, user.contrasenaNueva);
+                                let tokenResponse = createToken(clientObject.id, user._id, scopes);
                                 let tokenInstance = new tokenModel(tokenResponse);
                                 tokenInstance.save(function (err) {
                                     if (err) return handleError(err);
@@ -123,7 +123,7 @@ app.post('/oauth/token',async  function(req, res) {
                                             }
                                         }
 
-                                        let tokenResponse = createToken(clientObject.id, token.user.idUser, scopes, user.contrasenaNueva);
+                                        let tokenResponse = createToken(clientObject.id, token.user.idUser, scopes);
                                         let tokenInstance = new tokenModel(tokenResponse);
                                         tokenInstance.save(async function (err) {
                                             if (err) return handleError(err);
@@ -168,13 +168,12 @@ app.post('/oauth/token',async  function(req, res) {
     }
 });
 
-function createToken(clientId,id, scope, contrasenaNueva){
+function createToken(clientId,id, scope){
     let expiresin = Number(process.env.EXT); //se obtienen los segundos de vida del token
     let access_token = jwt.sign({
         idUser: id,
         jti: randomstring.generate(8),
-        scope : scope,
-        contrasenaNueva: contrasenaNueva
+        scope : scope
     },process.env.SEED,{expiresIn : expiresin }); //se genera el JWT y se se agregan a su payload algunos atributos que consideramos se utilizaran en el API
 
     let tokenResponse = {
@@ -186,8 +185,7 @@ function createToken(clientId,id, scope, contrasenaNueva){
         refresh_token_expires_in_date: Math.floor(Date.now() / 1000) + Number(process.env.RTEXT) ,
         scope: scope,
         client: {clientId: clientId},
-        user: {idUser : id},
-        user: {contrasenaNueva : contrasenaNueva}
+        user: {idUser : id}
     }
     return tokenResponse;
 }
