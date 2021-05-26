@@ -12,6 +12,7 @@ Por su parte, las Secretarías Ejecutivas Anticorrupción Estatales fungirán de
 |----------------|-------------------------------|--------------------------------------------------------------|
 |Node.js|12.18.2|Entorno base de JavaScript, se usa como motor de ejecución para otras tecnologías del proyecto.|
 |Mongoose|5.9.26|Funciona como biblioteca para realizar la conexión e interacción con la base de datos.|
+|JWT|8.5.1|Estándar abierto (RFC-7519) basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o servicios y garantizar que sean válidos y seguros.|
 
 ## Primeros pasos
 
