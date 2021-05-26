@@ -50,13 +50,13 @@ Si está siguiendo la guía puede deberá agregar la siguiente sección a su arc
 
 ```YAML
   oauth20v2:
-	restart: always
-	container_name: oauth20v2
-	build:
-  	  context: piloto_sistema_oauth20
-  	  dockerfile: Dockerfile
-	ports:
-  	- 9004:9004
+    restart: always
+    container_name: oauth20v2
+    build:
+      context: piloto_sistema_oauth20
+      dockerfile: Dockerfile
+    ports:
+      - 9004:9004
     links:
       - mongodb
     depends_on:
@@ -69,13 +69,13 @@ Si lo que desea es hacer un despliegue independiente puede crear un archivo dock
 version: '3.1'
 services:
   oauth20v2:
-	restart: always
-	container_name: oauth20v2
-	build:
-  	  context: piloto_sistema_oauth20
-  	  dockerfile: Dockerfile
-	ports:
-  	- 9004:9004
+    restart: always
+    container_name: oauth20v2
+    build:
+      context: piloto_sistema_oauth20
+      dockerfile: Dockerfile
+    ports:
+      - 9004:9004
 ```
 
 
