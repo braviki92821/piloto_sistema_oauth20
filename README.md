@@ -27,9 +27,9 @@ vim config/config.env
 ```
 ```bash
 #Expiration token in seconds
-EXT=600
+EXT=86400
 #Expiration refresh token in seconds
-RTEXT=900
+RTEXT=87000
 #SEED
 SEED=<seed>
 
