@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support form-encoded bodi
 app.use(cors());
 
 //connection mongo db
-const db = mongoose.connect('mongodb://'+process.env.USERMONGO+':'+process.env.PASSWORDMONGO+'@'+process.env.HOSTMONGO+'/'+process.env.DATABASE, { useNewUrlParser: true,  useUnifiedTopology: true  })
+const db = mongoose.connect('mongodb://'+process.env.USERMONGO+':'+process.env.PASSWORDMONGO+process.env.HOSTMONGO+process.env.DATABASE+'?authSource=admin', { useNewUrlParser: true,  useUnifiedTopology: true  })
     .then(() => console.log('Connect to MongoDB..'))
     .catch(err => console.error('Could not connect to MongoDB..', err))
 
@@ -46,7 +46,6 @@ app.post('/oauth/token',async  function(req, res) {
                         if (req.body.username && req.body.password) {
                             let username = req.body.username;
                             let password = req.body.password;
-
                             let user = await userService.getUser(username, password);
                             let scopes= '';
                             if (user) {
