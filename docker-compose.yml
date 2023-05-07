@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  frontend:
+  oauth20v2:
     restart: always
     container_name: oauth20v2
     build:
