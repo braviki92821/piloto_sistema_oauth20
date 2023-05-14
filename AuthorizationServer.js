@@ -167,6 +167,10 @@ app.post('/oauth/token',async  function(req, res) {
     }
 });
 
+app.get('/getVersion', async function(req, res){
+    return res.status(200).json({code: '200',  message: 'Versión: 02/05/2023' });
+});
+
 function createToken(clientId,id, scope){
     let expiresin = Number(process.env.EXT); //se obtienen los segundos de vida del token
     let access_token = jwt.sign({
